@@ -16,10 +16,12 @@ library(MASS)
 data(cats)
 head(cats)
 
+write.csv(cats, "data/catData.csv", row.names=FALSE)
+
 # modeling the data ----
-mod <- lm(Hwt ~ Bwt, data=cats)
+mod <- lm(Bwt ~ Hwt, data=cats)
 summary(mod)
 
-mod2 <- lm(Hwt ~ Bwt + Sex, data=cats)
+mod2 <- lm(Bwt ~ Hwt + Sex, data=cats)
 
 AIC(mod, mod2)
